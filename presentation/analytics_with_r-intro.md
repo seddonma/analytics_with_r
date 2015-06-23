@@ -1,0 +1,78 @@
+Analytics with R: Introduction
+========================================================
+author: Matthew Routley
+date: July 10, 2015
+font-family: 'Helvetica'
+
+What is R?
+========================================================
+
+## R is a language
+
+![R logo](images/r_logo_sm.png)
+
+- Powerful statistical programming
+- Based on S
+- Open source and freely available
+- Dynamic community
+
+***
+
+## R is a toolbox
+
+![RStudio logo](images/rstudio_logo.png)
+
+- Packages for anything you need (6,778 on CRAN) 
+- RStudio integrates everything
+- Evolving into an analytics product
+
+
+Benefits of R
+========================================================
+
+- Open and portable
+- Reproducible
+- Access to the latest and greatest
+
+Caveats when using R
+========================================================
+
+- _Steep_ learning curve
+- Quick, novel tasks may take longer
+- Challenging to match Office formatting
+
+R code
+========================================================
+
+
+```r
+rand <- rnorm(1000)
+hist(rand)
+```
+
+![plot of chunk code](analytics_with_r-intro-figure/code-1.png) 
+
+RStudio demo
+========================================================
+source: example.R
+
+
+Case study
+========================================================
+type:prompt
+
+Setting up an R-based toolkit
+========================================================
+source: ../docs/toolkit_setup.Rmd
+
+
+Resources
+========================================================
+
+- [R homepage](http://www.r-project.org/)
+- [R Studio](http://www.rstudio.com/)
+- [METACRAN](http://www.r-pkg.org/)
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/r)
+- [#RStats](https://twitter.com/search?q=%23rstats)
+- <matthew.routley@ontario.ca>
+

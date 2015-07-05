@@ -10,3 +10,6 @@ vignettes/*.html
 vignettes/*.pdf
 .Rproj.user
 .RData
+# Intermediate files
+analytics_with_r-intro.md
+analytics_with_r-intro-figure

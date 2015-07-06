@@ -1,8 +1,11 @@
-Analytics with R: Introduction
+Analytics with R
 ========================================================
 author: Matthew Routley
 date: July 10, 2015
-font-family: 'Helvetica'
+
+```{r setup, include=FALSE}
+opts_chunk$set(cache=TRUE)
+```
 
 What is R?
 ========================================================
@@ -29,9 +32,10 @@ What is R?
 Benefits of R
 ========================================================
 
-- Open and portable
-- Reproducible
+- Reproducible research
+- Powerful features for each component of analysis
 - Access to the latest and greatest
+- Open and portable
 
 Caveats when using R
 ========================================================
@@ -50,6 +54,7 @@ hist(rand)
 
 RStudio demo
 ========================================================
+title: false
 source: example.R
 
 

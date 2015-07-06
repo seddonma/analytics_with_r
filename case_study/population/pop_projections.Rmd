@@ -1,17 +1,20 @@
-# Download and import -----------------------------------------------------
+---
+title: "Policy implications of changing dependency ratios for children and seniors"
+author: "Matthew Routley"
+date: "July 10, 2015"
+output: html_document
+---
 
-url <- "http://www.fin.gov.on.ca/en/economy/demographics/projections/table6.xls"
+```{r, setup, echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE}
+url <- "http://www.fin.gov.on.ca/en/economy/demographics/projections/table6.xlsx"
 filename <- basename(url)
-download.file(url, destfile = filename, mode="wb")
+# download.file(url, destfile = filename, mode="wb")
 # Read each sheet in the Excel file, starting on row 5, into a dataframe
 proj_dfs <- lapply(readxl::excel_sheets(filename), readxl::read_excel, path = filename, skip = 5)
 # Bind the dataframes into one and convert from wide with years as columns 
 # to long with age, year, and count columns
 projections <- do.call("rbind", lapply(proj_dfs, tidyr::gather, Year, Count, -Age))
 rm(proj_dfs)
-
-# Reformat data -----------------------------------------------------------
-
 library(dplyr)
 projections <- projections %>%
   filter(!is.na(Age), !is.na(Count)) %>% # Drop blank and notes rows
@@ -23,10 +26,6 @@ projections <- projections %>%
   mutate(Age = stringr::str_replace(Age, "90\\+", "90")) %>%
   mutate(Age = as.integer(Age), Year = as.integer(Year)) %>%
   group_by(Year, Age)
-projections
-
-
-# Create demographic series -----------------------------------------------
 
 child_threshold <- 18
 senior_threshold <- 65
@@ -41,19 +40,21 @@ demographics <- projections %>%
          Senior_Dependency = Senior_Age/Total_Age) %>% 
   select(Year, Child_Dependency, Senior_Dependency) %>% 
   tidyr::gather(Type, Ratio, -Year)
-demographics
+```
 
-mean(demographics$Ratio[demographics$Type=="Senior_Dependency"])
+Dependency ratios express the sizes of specific demographic groups relative to the rest of the population. Generally high dependency ratios imply that more individuals are consuming services. Therefore, increases in the ratio over time have singificant implications for public policy and funding.
 
-# Plot dependency ratios --------------------------------------------------
+Two particular ratios are important for Provincial policy:
 
+- Children - anyone age `r child_threshold` or less
+- Seniors - anyone age `r senior_threshold` or more
+
+Population projections to `r max(demographics$Year)` from the Ministry of Finance show trends in these two ratios over time.
+
+```{r, plots, echo=FALSE, warning=FALSE}
 library(ggplot2)
 p <- ggplot(demographics, aes(x = Year, y = Ratio, group = Type, colour = Type))
 p + geom_line() + labs(title = "Projected dependency ratios")
+```
 
-# Statistical model -------------------------------------------------------
-
-model <- lm(Ratio ~ Type + Year, data = demographics)
-summary(model)
-model_interaction <- update(model, . ~ Type*Year)
-summary(model_interaction)
+Although the child ratio is declining moderately over time, the senior ratio rises dramatically from `r round(min(demographics$Ratio[demographics$Type=="Senior_Dependency"]), 2)` to `r round(max(demographics$Ratio[demographics$Type=="Senior_Dependency"]), 2)`.

@@ -13,4 +13,8 @@ vignettes/*.pdf
 # Intermediate files
 analytics_with_r-intro.md
 analytics_with_r-intro-figure
-toolkit_setup.html
+*.html
+*cache*
+*_files*
+# Downloads
+table6*

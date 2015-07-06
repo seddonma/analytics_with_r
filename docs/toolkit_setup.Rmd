@@ -5,6 +5,8 @@ date: "June 23, 2015"
 output: html_document
 ---
 
+Here are some basic instructions for setting up R and RStudio on Windows. Advanced options are included below for GitHub.
+
 ## Install R
 
 1. Open <http://cran.rstudio.com/>, click the "Download R for Windows" link and then the "base" link

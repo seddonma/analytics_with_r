@@ -66,6 +66,8 @@ Setting up an R-based toolkit
 ========================================================
 source: ../docs/toolkit_setup.Rmd
 
+<http://rpubs.com/mroutley/91328>
+
 
 Resources
 ========================================================
@@ -77,3 +79,11 @@ Resources
 - [#RStats](https://twitter.com/search?q=%23rstats)
 - <matthew.routley@ontario.ca>
 
+Future topics
+========================================================
+
+- Data management (import, clean, and export)
+- Statistical models
+- Plotting
+- Reproducible research
+- Time travel with source control

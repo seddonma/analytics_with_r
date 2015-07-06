@@ -16,5 +16,6 @@ analytics_with_r-intro-figure
 *.html
 *cache*
 *_files*
+*rsconnect*
 # Downloads
 table6*

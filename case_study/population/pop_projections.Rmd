@@ -2,7 +2,7 @@
 title: "Policy implications of changing dependency ratios for children and seniors"
 author: "Matthew Routley"
 date: "July 10, 2015"
-output: html_document
+output: word_document
 ---
 
 ```{r, setup, echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE}

@@ -54,7 +54,7 @@ hist(rand)
 
 RStudio demo
 ========================================================
-title: false
+type:prompt
 source: example.R
 
 

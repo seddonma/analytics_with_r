@@ -2,7 +2,7 @@
 
 url <- "http://www.fin.gov.on.ca/en/economy/demographics/projections/table6.xls"
 filename <- basename(url)
-download.file(url, destfile = filename, mode="wb")
+download.file(url, destfile = filename, mode = "wb")
 # Read each sheet in the Excel file, starting on row 5, into a dataframe
 proj_dfs <- lapply(readxl::excel_sheets(filename), readxl::read_excel, path = filename, skip = 5)
 # Bind the dataframes into one and convert from wide with years as columns 
@@ -25,7 +25,6 @@ projections <- projections %>%
   group_by(Year, Age)
 projections
 
-
 # Create demographic series -----------------------------------------------
 
 child_threshold <- 18
@@ -42,8 +41,6 @@ demographics <- projections %>%
   select(Year, Child_Dependency, Senior_Dependency) %>% 
   tidyr::gather(Type, Ratio, -Year)
 demographics
-
-mean(demographics$Ratio[demographics$Type=="Senior_Dependency"])
 
 # Plot dependency ratios --------------------------------------------------
 
